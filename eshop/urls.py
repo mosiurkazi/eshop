@@ -21,7 +21,7 @@ import transaction.urls as transaction_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('inventories/', include(inventory_urls)),
+    path('inventories/', include(inventory_urls)),
     path('items/', include(item_list_urls)),
     # path('trsnsactions/', include(transaction_urls)),
 ]
