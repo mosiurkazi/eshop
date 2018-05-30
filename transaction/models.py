@@ -10,4 +10,4 @@ class TransactionSystem(models.Model):
     date = models.DateTimeField()
 
     def __str__(self):
-        return self.item
+        return self.item.name

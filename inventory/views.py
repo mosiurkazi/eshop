@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import InventorySystem
 from .forms import InventoryForm
 from transaction.models import TransactionSystem
@@ -24,6 +24,8 @@ def inventory_view(request):
                 a.quantity = a.quantity + quantity
                 a.save()
 
+
+
             except:
 
                 InventorySystem.objects.create(
@@ -32,15 +34,16 @@ def inventory_view(request):
                             price=price
                             )
 
-
             TransactionSystem.objects.create(
                         item=item,
                         quantity=quantity,
                         price=price,
-                        status='yes',
+                        status='buy',
                         date=datetime.datetime.now()
                         )
-            return render(request, 'inventory/inventory.html', {'form':form})
+
+            return redirect('inventory-list-view')
+            # return render(request, 'inventory/inventory.html', {'form':form})
 
     return render(request, 'inventory/inventory.html', {'form':form})
 
@@ -65,9 +68,31 @@ def inventory_sell_view(request):
                         item=item,
                         quantity=quantity,
                         price=price,
-                        status='yes',
+                        status='sell',
                         date=datetime.datetime.now()
                         )
-            return render(request, 'inventory/sell_inventory.html', {'sell_form':sell_form})
+            return redirect('inventory-list-view')
 
     return render(request, 'inventory/sell_inventory.html', {'sell_form':sell_form})
+
+def inventory_list_view(request):
+
+
+    # inventoty_list = InventoryForm()
+    #
+    # if request.method == 'POST':
+    #     inventoty_list = InventoryForm(request.POST)
+    #     if inventoty_list.is_valid():
+    #         inventoty_list.save()
+            #
+            # item = inventoty_list.cleaned_data['item']
+            # quantity = inventoty_list.cleaned_data['quantity']
+            # price = inventoty_list.cleaned_data['price']
+
+    all_inventory = InventorySystem.objects.all()
+    return render(request, 'inventory/inventory_list.html', {'all_inventory':all_inventory})
+
+
+def buy_status(request):
+
+    transaction_list = TransactionSystem.objects.filter(date=datetime.date.today(), status='buy')
