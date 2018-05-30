@@ -3,6 +3,9 @@ from item_list.models import ItemList
 
 # Create your models here.
 class InventorySystem(models.Model):
-    Item = models.ForeignKey(ItemList, on_delete=None)
+    item = models.ForeignKey(ItemList, on_delete=None)
     quantity = models.IntegerField()
     price = models.IntegerField()
+
+    def __str__(self):
+        return self.item.name

@@ -7,13 +7,12 @@
   <title>Document</title>
 </head>
 <body>
-  <form class="" action="{% url 'inventory-form' %}" method="post">
+  <form class="" action="{% url 'sell-form' %}" method="post">
     {% csrf_token %}
-    <p>{{form.as_p}}</p>
+    <p>{{sell_form.as_p}}</p>
 
     <input type="submit" name="" value="click here">
 
   </form>
-  <a href="{% url 'inventory-list-view' %}">GO</a>
 </body>
 </html>
