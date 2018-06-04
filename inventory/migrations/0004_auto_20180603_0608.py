@@ -7,6 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('item_list', '__first__'),
         ('inventory', '0003_auto_20180529_0712'),
     ]
 

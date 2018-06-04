@@ -6,6 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('item_list', '__first__'),
         ('transaction', '0002_auto_20180529_0535'),
     ]
 
