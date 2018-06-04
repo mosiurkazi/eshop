@@ -1,10 +1,16 @@
 from django.urls import path
-from .views import add_item, show_item
+from .views import add_item, show_item, edit_item, dashboard_view, delete_item
 
 urlpatterns = [
 
+
+
+    path('dashboard/', dashboard_view, name='dashboard'),
     path('add-item/', add_item, name='add_item'),
-    path('show-items/', show_item, name='show-items'),
+    path('item-list/', show_item, name='item-list'),
+    path('edit-items/<int:id>', edit_item, name='edit-items'),
+    path('delete_item/<int:id>', delete_item, name='delete_item'),
+
 
 
 ]

@@ -1,15 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
- {% for add in item_list %}
-   <p>{{add.name}}</p>
- {% endfor %}
-</body>
-</html>
+{% block content %}
+<br>
+
+<div class="jumbotron">
+  <h1>ADD ITEMS</h1>
+  <p>Please add items</p>
+</div>
+
+  <form action="{% url 'add_item' %}" method="post">
+    {% csrf_token %}
+
+    {{form}}
+    <input type="submit" name="" value="OK">
+  </form>
+
+  {% endblock %}

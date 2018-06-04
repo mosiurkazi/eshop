@@ -8,7 +8,7 @@ import datetime
 
 # Create your views here.
 
-def inventory_view(request):
+def inventory_buy_form(request):
     form = InventoryForm()
 
     if request.method == 'POST':
@@ -21,10 +21,9 @@ def inventory_view(request):
 
             try:
                 a = InventorySystem.objects.get(item=item)
+                # update previous quantity
                 a.quantity = a.quantity + quantity
                 a.save()
-
-
 
             except:
 
@@ -45,9 +44,9 @@ def inventory_view(request):
             return redirect('inventory-list-view')
             # return render(request, 'inventory/inventory.html', {'form':form})
 
-    return render(request, 'inventory/inventory.html', {'form':form})
+    return render(request, 'inventory/inventory_buy_form.html', {'form':form})
 
-def inventory_sell_view(request):
+def inventory_sell_form(request):
     sell_form = InventoryForm()
 
     if request.method == 'POST':
@@ -73,7 +72,7 @@ def inventory_sell_view(request):
                         )
             return redirect('inventory-list-view')
 
-    return render(request, 'inventory/sell_inventory.html', {'sell_form':sell_form})
+    return render(request, 'inventory/inventory_sell_form.html', {'sell_form':sell_form})
 
 def inventory_list_view(request):
 
@@ -91,8 +90,3 @@ def inventory_list_view(request):
 
     all_inventory = InventorySystem.objects.all()
     return render(request, 'inventory/inventory_list.html', {'all_inventory':all_inventory})
-
-
-def buy_status(request):
-
-    transaction_list = TransactionSystem.objects.filter(date=datetime.date.today(), status='buy')

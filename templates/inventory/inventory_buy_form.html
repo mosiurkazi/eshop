@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+
+<div class="jumbotron">
+  <h1>Buy Form</h1>
+  <p>Please fill-up the buy form</p>
+</div>
+
+  <form class="" action="{% url 'inventory-buy-form' %}" method="post">
+    {% csrf_token %}
+
+    <p>{{form.item}}</p>
+    <p>{{form.quantity}}</p>
+    <p>{{form.price}}</p>
+
+    <input type="submit" name="" value="click here">
+
+  </form>
+{% endblock %}

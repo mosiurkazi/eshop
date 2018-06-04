@@ -7,12 +7,13 @@
   <title>Document</title>
 </head>
 <body>
-  <form class="" action="{% url 'sell-form' %}" method="post">
+  <form action="" method="post">
     {% csrf_token %}
-    <p>{{sell_form.as_p}}</p>
 
-    <input type="submit" name="" value="click here">
-
+    {{clause}}
+    <input type="submit" name="" value="OK">
   </form>
+
+
 </body>
 </html>

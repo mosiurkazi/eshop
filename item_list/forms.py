@@ -4,4 +4,4 @@ from .models import ItemList
 class ItemListForm(forms.ModelForm):
     class Meta:
         model = ItemList
-        fields = ['name']
+        fields = ['name', 'is_active']
