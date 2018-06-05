@@ -18,10 +18,12 @@ from django.urls import path,include
 import inventory.urls as inventory_urls
 import item_list.urls as item_list_urls
 import transaction.urls as transaction_urls
+import account.urls as account_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('inventories/', include(inventory_urls)),
     path('items/', include(item_list_urls)),
     path('transactions/', include(transaction_urls)),
+    path('account/', include(account_urls)),
 ]

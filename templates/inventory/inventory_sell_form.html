@@ -10,10 +10,7 @@
 
   <form class="" action="{% url 'inventory-sell-form' %}" method="post">
     {% csrf_token %}
-
-    <p>{{sell_form.item}}</p>
-    <p>{{sell_form.quantity}}</p>
-    <p>{{sell_form.price}}</p>
+    {{form.as_p}}
 
     <input type="submit" name="" value="click here">
 

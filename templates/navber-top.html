@@ -9,7 +9,7 @@
                 </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle"  href="#">
+                    <a class="dropdown-toggle"  href="{% url 'home' %}">
                         HOME
                     </a>
 
@@ -17,7 +17,7 @@
                 </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" href="#">
+                    <a class="dropdown-toggle" href="{% url 'dashboard' %}">
                         <i class="fa fa-bell fa-fw"></i>DASHBOARD
                     </a>
 
@@ -29,12 +29,12 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="{% url 'user-login' %}"><i class="fa fa-user fa-fw"></i>Login</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="{% url 'user-registration' %}"><i class="fa fa-sign-in fa-fw"></i>Registration</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="{% url 'user-logout' %}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->

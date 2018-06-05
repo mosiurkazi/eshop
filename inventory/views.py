@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.contrib.auth.decorators import login_required
 from .models import InventorySystem
 from .forms import InventoryForm
 from transaction.models import TransactionSystem
@@ -6,8 +7,9 @@ import datetime
 
 
 
-# Create your views here.
 
+# Create your views here.
+@login_required
 def inventory_buy_form(request):
     form = InventoryForm()
 
@@ -46,6 +48,7 @@ def inventory_buy_form(request):
 
     return render(request, 'inventory/inventory_buy_form.html', {'form':form})
 
+@login_required
 def inventory_sell_form(request):
     sell_form = InventoryForm()
 
@@ -72,8 +75,9 @@ def inventory_sell_form(request):
                         )
             return redirect('inventory-list-view')
 
-    return render(request, 'inventory/inventory_sell_form.html', {'sell_form':sell_form})
+    return render(request, 'inventory/inventory_sell_form.html', {'form':sell_form})
 
+@login_required
 def inventory_list_view(request):
 
 
