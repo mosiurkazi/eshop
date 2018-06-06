@@ -15,7 +15,7 @@ def add_item(request):
         if form.is_valid():
             form.save()
 
-            return redirect('show-items')
+            return redirect('item-list')
 
     else:
         form = ItemListForm()

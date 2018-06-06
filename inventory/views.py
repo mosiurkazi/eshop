@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from .models import InventorySystem
-from .forms import InventoryForm
+from .forms import InventoryBuyForm, InventorySellForm
 from transaction.models import TransactionSystem
 import datetime
 
@@ -11,10 +11,10 @@ import datetime
 # Create your views here.
 @login_required
 def inventory_buy_form(request):
-    form = InventoryForm()
+    form = InventoryBuyForm()
 
     if request.method == 'POST':
-        form = InventoryForm(request.POST)
+        form = InventoryBuyForm(request.POST)
         if form.is_valid():
 
             item = form.cleaned_data['item']
@@ -50,10 +50,10 @@ def inventory_buy_form(request):
 
 @login_required
 def inventory_sell_form(request):
-    sell_form = InventoryForm()
+    sell_form = InventorySellForm()
 
     if request.method == 'POST':
-        sell_form = InventoryForm(request.POST)
+        sell_form = InventorySellForm(request.POST)
         if sell_form.is_valid():
 
             item = sell_form.cleaned_data['item']

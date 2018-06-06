@@ -9,11 +9,9 @@
 </div>
 
   <form class="" action="{% url 'inventory-buy-form' %}" method="post">
-    {% csrf_token %}
 
-    <p>{{form.item}}</p>
-    <p>{{form.quantity}}</p>
-    <p>{{form.price}}</p>
+    {% csrf_token %}
+    {{form.as_p}}
 
     <input type="submit" name="" value="click here">
 
