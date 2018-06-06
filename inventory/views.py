@@ -56,18 +56,17 @@ def inventory_sell_form(request):
         sell_form = InventorySellForm(request.POST)
         if sell_form.is_valid():
 
-            item = sell_form.cleaned_data['item']
+            inventory_item = sell_form.cleaned_data['item'] # Inventory object
             quantity = sell_form.cleaned_data['quantity']
             price = sell_form.cleaned_data['price']
 
-
-            b = InventorySystem.objects.get(item=item)
-            b.quantity = b.quantity - quantity
-            b.save()
-
+            # Update Inventory quantity
+            # Inventory_quantity = previous quantity - sold quantity.
+            inventory_item.quantity = inventory_item.quantity - quantity
+            inventory_item.save()
 
             TransactionSystem.objects.create(
-                        item=item,
+                        item=inventory_item.item, # insert item object from inventory item.
                         quantity=quantity,
                         price=price,
                         status='sell',
