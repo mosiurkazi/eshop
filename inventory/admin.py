@@ -3,4 +3,9 @@ from .models import InventorySystem
 
 # Register your models here.
 
-admin.site.register(InventorySystem)
+
+
+class InventoryAdmin(admin.ModelAdmin):
+    list_display = ('item', 'quantity', 'price')
+
+admin.site.register(InventorySystem, InventoryAdmin)

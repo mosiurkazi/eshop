@@ -9,7 +9,7 @@ class buyManager(models.Manager):
 
 class ItemList(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     objects = buyManager()
 
     def __str__(self):
